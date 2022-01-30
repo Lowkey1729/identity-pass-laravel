@@ -2,9 +2,9 @@
 
 namespace IdentityPass\IdentityPass;
 
+use IdentityPass\IdentityPass\Commands\IdentityPassCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use IdentityPass\IdentityPass\Commands\IdentityPassCommand;
 
 class IdentityPassServiceProvider extends PackageServiceProvider
 {

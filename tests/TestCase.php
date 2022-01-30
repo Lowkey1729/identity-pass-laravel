@@ -2,9 +2,9 @@
 
 namespace IdentityPass\IdentityPass\Tests;
 
+use IdentityPass\IdentityPass\IdentityPassServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use IdentityPass\IdentityPass\IdentityPassServiceProvider;
 
 class TestCase extends Orchestra
 {
