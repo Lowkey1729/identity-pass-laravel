@@ -55,10 +55,7 @@
         "laravel": {
             "providers": [
                 "IdentityPass\\IdentityPass\\IdentityPassServiceProvider"
-            ],
-            "aliases": {
-                "IdentityPass": "IdentityPass\\IdentityPass\\Facades\\IdentityPass"
-            }
+            ]
         }
     },
     "minimum-stability": "dev",
