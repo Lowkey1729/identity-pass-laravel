@@ -5,7 +5,7 @@
  *
  */
 
-namespace App\Classes;
+namespace IdentityPass\IdentityPass\Classes;
 
 class Constants {
 
