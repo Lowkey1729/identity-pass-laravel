@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "identity-pass/identity-pass-laravel",
+    "description": "About",
     "keywords": [
-        ":vendor_name",
+        "Identity Pass",
         "laravel",
-        ":package_slug"
+        "identity-pass-laravel"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/identity-pass/identity-pass-laravel",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Olarewaju Mojeed Olalekan",
+            "email": "olarewajumojeed9@gmail.com",
             "role": "Developer"
         }
     ],
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories"
+            "IdentityPass\\IdentityPass\\": "src",
+            "IdentityPass\\IdentityPass\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "IdentityPass\\IdentityPass\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -54,10 +54,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "IdentityPass\\IdentityPass\\IdentityPassServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "IdentityPass": "IdentityPass\\IdentityPass\\Facades\\IdentityPass"
             }
         }
     },

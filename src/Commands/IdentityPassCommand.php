@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace IdentityPass\IdentityPass\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class IdentityPassCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'identity-pass-laravel';
 
     public $description = 'My command';
 
