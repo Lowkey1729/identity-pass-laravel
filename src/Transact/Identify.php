@@ -2,25 +2,30 @@
 
 namespace  IdentityPass\IdentityPass\Transact;
 
+
+use IdentityPass\IdentityPass\Classes\CurlClient;
 use IdentityPass\IdentityPass\Contracts\Nigeria\IdentityPassContract;
 
 class Identify implements IdentityPassContract
 {
+
     /**
      * Get api endpoint
      *
      * @param null $path
      * @return string
      */
-    public static function url($path = null): string
+    static function url( $path = null ): string
     {
         $path = $path == null ? '' : $path;
 
-        if (env('APP_ENV') == 'production') {
-            return "https://api.myidentitypay.com$path";
+        if ( env('APP_ENV') == 'production' ) {
+
+            return "https://api.myidentitypay.com/api/v1$path";
+
         }
 
-        return "https://sandbox.myidentitypass.com$path";
+        return "https://sandbox.myidentitypass.com/api/v1$path";
     }
 
     /**
@@ -30,25 +35,80 @@ class Identify implements IdentityPassContract
      */
     public static function headers(): array
     {
+
+        return [
+            'Content-Type: application/json',
+            "Cache-Control: no-cache",
+            "x-api-key : ".  self::getSecretKey(),
+        ];
+
     }
 
     /**
      * Get secret key
      *
-     * @return array
+     * @return string
      */
-    public static function getSecretKey(): array
+    public static function getSecretKey(): string
     {
+        if ( env('APP_ENV') == 'production' ) {
+            return '';
+        }
+
+        return 'test_8vlwtr29t7347nhohr99n5:ti5BCHTr-spld_ex1E1ghoCyxsI';
     }
 
     /**
      * plate number verification
      *
+     * @param $vehicleNumber
      * @return array
      */
-    public static function plateNumberVerification(): array
+    public static function plateNumberVerification($vehicleNumber): array
     {
+
+        try {
+
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/biometrics/merchant/data/verification/vehicle');
+
+            $payload = [
+                'vehicle_number' => $vehicleNumber
+            ];
+            $res = CurlClient::send($headers, $method, $url, json_encode([]));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200){
+
+                return [
+                    'status' => true,
+                    'response_code' => $data->response_code,
+                    'message' => $data->message,
+                    'data' => $data->data,
+                ];
+
+            }
+
+            // error in transaction.
+            return [
+                'success'   => false,
+                'message' => $data->description
+            ];
+
+
+        }
+        catch (\Exception $exception){
+
+            return [
+                'success'   => false,
+                'message'   => 'Error exception with plate number verification.',
+                'error'   => $exception->getMessage()
+            ];
+
+        }
     }
+
 
     /**
      * verification of bvn with face
@@ -57,6 +117,7 @@ class Identify implements IdentityPassContract
      */
     public static function bvnWithFaceVerification(): array
     {
+
     }
 
     /**
@@ -66,6 +127,7 @@ class Identify implements IdentityPassContract
      */
     public static function bvn2Verification(): array
     {
+
     }
 
     /**
@@ -75,6 +137,7 @@ class Identify implements IdentityPassContract
      */
     public static function bvn1Verification(): array
     {
+
     }
 
     /**
@@ -84,6 +147,7 @@ class Identify implements IdentityPassContract
      */
     public static function ninImageVerification(): array
     {
+
     }
 
     /**
@@ -93,6 +157,7 @@ class Identify implements IdentityPassContract
      */
     public static function ninWithoutFaceVerification(): array
     {
+
     }
 
     /**
@@ -102,6 +167,7 @@ class Identify implements IdentityPassContract
      */
     public static function ninWithFaceVerification(): array
     {
+
     }
 
     /**
@@ -111,6 +177,7 @@ class Identify implements IdentityPassContract
      */
     public static function tinVerification(): array
     {
+
     }
 
     /**
@@ -120,6 +187,8 @@ class Identify implements IdentityPassContract
      */
     public static function basicCACVerification(): array
     {
+
+
     }
 
     /**
@@ -129,6 +198,7 @@ class Identify implements IdentityPassContract
      */
     public static function advanceCACVerification(): array
     {
+
     }
 
     /**
@@ -138,6 +208,7 @@ class Identify implements IdentityPassContract
      */
     public static function phoneNumberVerification(): array
     {
+
     }
 
     /**
@@ -147,6 +218,7 @@ class Identify implements IdentityPassContract
      */
     public static function verifyBankAccount(): array
     {
+
     }
 
     /**
@@ -156,6 +228,7 @@ class Identify implements IdentityPassContract
      */
     public static function getBankCodes(): array
     {
+
     }
 
     /**
@@ -165,6 +238,7 @@ class Identify implements IdentityPassContract
      */
     public static function VotersCardImageVerification(): array
     {
+
     }
 
     /**
@@ -174,6 +248,7 @@ class Identify implements IdentityPassContract
      */
     public static function driverLicenceImageVerification(): array
     {
+
     }
 
     /**
@@ -183,6 +258,7 @@ class Identify implements IdentityPassContract
      */
     public static function driverLicenceVerification(): array
     {
+
     }
 
     /**
@@ -192,6 +268,7 @@ class Identify implements IdentityPassContract
      */
     public static function getCreditBureauStatement(): array
     {
+
     }
 
     /**
@@ -201,6 +278,7 @@ class Identify implements IdentityPassContract
      */
     public static function passportVerification(): array
     {
+
     }
 
     /**
@@ -210,6 +288,7 @@ class Identify implements IdentityPassContract
      */
     public static function faceComparison(): array
     {
+
     }
 
     /**
@@ -219,6 +298,7 @@ class Identify implements IdentityPassContract
      */
     public static function faceEnrollment(): array
     {
+
     }
 
     /**
@@ -228,6 +308,7 @@ class Identify implements IdentityPassContract
      */
     public static function faceLivelinessCheck(): array
     {
+
     }
 
     /**
@@ -237,6 +318,7 @@ class Identify implements IdentityPassContract
      */
     public static function faceAuthentication(): array
     {
+
     }
 
     /**
@@ -246,6 +328,7 @@ class Identify implements IdentityPassContract
      */
     public static function idFaceMAtching(): array
     {
+
     }
 
     /**
@@ -255,6 +338,7 @@ class Identify implements IdentityPassContract
      */
     public static function getWalletBallance(): array
     {
+
     }
 
     /**
@@ -264,6 +348,7 @@ class Identify implements IdentityPassContract
      */
     public static function vinIdentificationNumber(): array
     {
+
     }
 
     /**
@@ -273,6 +358,7 @@ class Identify implements IdentityPassContract
      */
     public static function interpolBanList(): array
     {
+
     }
 
     /**
@@ -282,5 +368,7 @@ class Identify implements IdentityPassContract
      */
     public static function votersCardVerification(): array
     {
+
     }
+
 }

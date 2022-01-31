@@ -21,7 +21,12 @@ interface IdentityPassContract
 
     public static function getSecretKey(): string;
 
+<<<<<<< HEAD
     public static function plateNumberVerification(): array;
+=======
+
+    public static function plateNumberVerification($vehicleNumber): array;
+>>>>>>> e55e055 (api integration)
 
     public static function bvnWithFaceVerification(): array;
 

@@ -5,6 +5,11 @@ namespace IdentityPass\IdentityPass;
 use IdentityPass\IdentityPass\Commands\IdentityPassCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\ServiceProvider;
+use IdentityPass\IdentityPass\Transact\Identify;
+>>>>>>> e55e055 (api integration)
 
 class IdentityPassServiceProvider extends PackageServiceProvider
 {
@@ -13,7 +18,20 @@ class IdentityPassServiceProvider extends PackageServiceProvider
         $package
             ->name('identity-pass-laravel')
             ->hasConfigFile()
-            ->hasViews()
             ->hasCommand(IdentityPassCommand::class);
     }
+<<<<<<< HEAD
+=======
+
+    public function packageRegistered(): void
+    {
+        $this->app->bind('identity-pass-laravel', function () {
+            return new Identify();
+        });
+    }
+
+
+
+
+>>>>>>> e55e055 (api integration)
 }
