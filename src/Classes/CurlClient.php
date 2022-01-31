@@ -2,11 +2,11 @@
 
 namespace IdentityPass\IdentityPass\Classes;
 
-
-class CurlClient {
-
-    static function send($headers, $httpMethod, $resourceUrl, $request) {
-        $response = Array();
+class CurlClient
+{
+    public static function send($headers, $httpMethod, $resourceUrl, $request)
+    {
+        $response = [];
 
         $curl = curl_init();
 
@@ -17,7 +17,7 @@ class CurlClient {
         }
 
         if ($httpMethod == 'POST') {
-            curl_setopt($curl, CURLOPT_POST, TRUE);
+            curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
         }
 
@@ -55,6 +55,4 @@ class CurlClient {
 
         return $response;
     }
-
 }
-

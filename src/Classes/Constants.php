@@ -7,25 +7,21 @@
 
 namespace IdentityPass\IdentityPass\Classes;
 
-class Constants {
-
-    const SANDBOX_BASE_URL = "";
-    const PRODUCTION_BASE_URL = "";
-    const DEV_BASE_URL = "";
-    const PASSPORT_RESOURCE_URL = "";
-    const HTTP_CODE = "HTTP_CODE";
-    const RESPONSE_BODY = "RESPONSE_BODY";
-    const TIMESTAMP = "TIMESTAMP";
-    const NONCE = "NONCE";
-    const SIGNATURE_METHOD = "SIGNATURE_METHOD";
-    const SIGNATURE = "SIGNATURE";
-    const AUTHORIZATION = "AUTHORIZATION";
-    const CONTENT_TYPE = "application/json";
-    const SIGNATURE_METHOD_VALUE = "SHA1";
-    const LAGOS_TIME_ZONE = "Africa/Lagos";
-    const BEARER_AUTHORIZATION_REALM = "Bearer";
-
-
-
+class Constants
+{
+    public const SANDBOX_BASE_URL = "";
+    public const PRODUCTION_BASE_URL = "";
+    public const DEV_BASE_URL = "";
+    public const PASSPORT_RESOURCE_URL = "";
+    public const HTTP_CODE = "HTTP_CODE";
+    public const RESPONSE_BODY = "RESPONSE_BODY";
+    public const TIMESTAMP = "TIMESTAMP";
+    public const NONCE = "NONCE";
+    public const SIGNATURE_METHOD = "SIGNATURE_METHOD";
+    public const SIGNATURE = "SIGNATURE";
+    public const AUTHORIZATION = "AUTHORIZATION";
+    public const CONTENT_TYPE = "application/json";
+    public const SIGNATURE_METHOD_VALUE = "SHA1";
+    public const LAGOS_TIME_ZONE = "Africa/Lagos";
+    public const BEARER_AUTHORIZATION_REALM = "Bearer";
 }
-

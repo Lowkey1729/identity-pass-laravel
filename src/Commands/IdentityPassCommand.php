@@ -3,7 +3,6 @@
 namespace IdentityPass\IdentityPass\Commands;
 
 use Illuminate\Console\Command;
-use Src\Classes\CurlClient;
 
 class IdentityPassCommand extends Command
 {
@@ -17,6 +16,4 @@ class IdentityPassCommand extends Command
 
         return self::SUCCESS;
     }
-
-
 }
