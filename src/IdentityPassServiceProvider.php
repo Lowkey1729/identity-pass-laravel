@@ -18,4 +18,6 @@ class IdentityPassServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasCommand(IdentityPassCommand::class);
     }
+
+
 }

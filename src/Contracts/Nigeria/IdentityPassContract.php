@@ -23,6 +23,9 @@ interface IdentityPassContract
     public static function headers(): array;
 
 
+    public static function getSecretKey(): string;
+
+
     public static function plateNumberVerification(): array;
 
 
