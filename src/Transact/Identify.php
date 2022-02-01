@@ -103,7 +103,6 @@ class Identify implements IdentityPassContract
     public static function bvnOrPhoneVerification($bvnOrPhone): array
     {
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/biometrics/merchant/bp/verification');
