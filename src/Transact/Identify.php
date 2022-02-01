@@ -138,7 +138,6 @@ class Identify implements IdentityPassContract
         }
     }
 
-
     /**
      * bvn 2.0 verification
      *
@@ -155,7 +154,6 @@ class Identify implements IdentityPassContract
      */
     public static function bvn2Verification($bvn): array
     {
-
         try {
             $headers = self::headers();
             $method = 'POST';
@@ -189,9 +187,7 @@ class Identify implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
-
 
     /**
      * bvn 1.0 verification
