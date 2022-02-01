@@ -138,14 +138,6 @@ class Identify implements IdentityPassContract
         }
     }
 
-    /**
-     * bvn 2.0 verification
-     *
-     * @return array
-     */
-    public static function bvn2Verification(): array
-    {
-    }
 
     /**
      * bvn 2.0 verification
@@ -155,6 +147,51 @@ class Identify implements IdentityPassContract
     public static function bvnWithFaceVerification(): array
     {
     }
+
+    /**
+     * bvn 2.0 verification
+     * @param $bvn
+     * @return array
+     */
+    public static function bvn2Verification($bvn): array
+    {
+
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/biometrics/merchant/data/verification/bvn');
+
+            $payload = [
+                'number' => $bvn,
+            ];
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'status' => true,
+                    'response_code' => $data->response_code,
+                    'message' => $data->message,
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => 'Error exception with plate number verification.',
+                'error' => $exception->getMessage(),
+            ];
+        }
+
+    }
+
 
     /**
      * bvn 1.0 verification

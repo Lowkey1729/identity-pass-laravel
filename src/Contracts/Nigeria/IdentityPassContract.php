@@ -27,7 +27,7 @@ interface IdentityPassContract
 
     public static function bvnWithFaceVerification(): array;
 
-    public static function bvn2Verification(): array;
+    public static function bvn2Verification($bvn): array;
 
     public static function bvn1Verification(): array;
 
