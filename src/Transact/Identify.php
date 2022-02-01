@@ -95,7 +95,7 @@ class Identify implements IdentityPassContract
     }
 
     /**
-     * verification of bvn with face
+     * verification of bvn or phone number
      *
      * @param $bvnOrPhone
      * @return array
@@ -145,6 +145,15 @@ class Identify implements IdentityPassContract
      * @return array
      */
     public static function bvn2Verification(): array
+    {
+    }
+
+    /**
+     * bvn 2.0 verification
+     *
+     * @return array
+     */
+    public static function bvnWithFaceVerification(): array
     {
     }
 
