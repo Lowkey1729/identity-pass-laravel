@@ -34,7 +34,7 @@ class Identify implements IdentityPassContract
         return [
             'Content-Type: application/json',
             "Cache-Control: no-cache",
-            "x-api-key : ".  self::getSecretKey(),
+            "x-api-key: ".  self::getSecretKey(),
         ];
     }
 
@@ -83,7 +83,7 @@ class Identify implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->description,
+                'message' => $data->detail,
             ];
         } catch (\Exception $exception) {
             return [
