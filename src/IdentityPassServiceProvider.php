@@ -3,16 +3,14 @@
 namespace IdentityPass\IdentityPass;
 
 use IdentityPass\IdentityPass\Commands\IdentityPassCommand;
+use IdentityPass\IdentityPass\Transact\Identify;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Illuminate\Support\ServiceProvider;
-use IdentityPass\IdentityPass\Transact\Identify;
 
 class IdentityPassServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-
         $package
             ->name('identity-pass-laravel')
             ->hasConfigFile()
@@ -25,8 +23,4 @@ class IdentityPassServiceProvider extends PackageServiceProvider
             return new Identify();
         });
     }
-
-
-
-
 }
