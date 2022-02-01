@@ -128,13 +128,11 @@ class Identify implements IdentityPassContract
                 'message' => $data->detail,
             ];
         } catch (\Exception $exception) {
-
             return [
                 'success' => false,
                 'message' => 'Error exception with bvn or phone verification.',
                 'error' => $exception->getMessage(),
             ];
-
         }
     }
 
