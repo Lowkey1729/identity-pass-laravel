@@ -68,7 +68,7 @@ class Identify implements IdentityPassContract
             $payload = [
                 'vehicle_number' => $vehicleNumber,
             ];
-            $res = CurlClient::send($headers, $method, $url, json_encode([$payload]));
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
             $data = json_decode($res['RESPONSE_BODY']);
 
             if ($res['HTTP_CODE'] == 200) {
@@ -76,7 +76,7 @@ class Identify implements IdentityPassContract
                     'status' => true,
                     'response_code' => $data->response_code,
                     'message' => $data->message,
-                    'data' => $data->data,
+                    'data' => $data,
                 ];
             }
 
