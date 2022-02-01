@@ -73,10 +73,9 @@ class Identify implements IdentityPassContract
 
             if ($res['HTTP_CODE'] == 200) {
                 return [
-                    'status' => true,
-                    'response_code' => $data->response_code,
-                    'message' => $data->message,
+
                     'data' => $data,
+
                 ];
             }
 
@@ -117,10 +116,9 @@ class Identify implements IdentityPassContract
 
             if ($res['HTTP_CODE'] == 200) {
                 return [
-                    'status' => true,
-                    'response_code' => $data->response_code,
-                    'message' => $data->message,
+
                     'data' => $data,
+
                 ];
             }
 
@@ -130,11 +128,13 @@ class Identify implements IdentityPassContract
                 'message' => $data->detail,
             ];
         } catch (\Exception $exception) {
+
             return [
                 'success' => false,
-                'message' => 'Error exception with plate number verification.',
+                'message' => 'Error exception with bvn or phone verification.',
                 'error' => $exception->getMessage(),
             ];
+
         }
     }
 
@@ -170,9 +170,6 @@ class Identify implements IdentityPassContract
 
             if ($res['HTTP_CODE'] == 200) {
                 return [
-                    'status' => true,
-                    'response_code' => $data->response_code,
-                    'message' => $data->message,
                     'data' => $data,
                 ];
             }
@@ -185,7 +182,7 @@ class Identify implements IdentityPassContract
         } catch (\Exception $exception) {
             return [
                 'success' => false,
-                'message' => 'Error exception with plate number verification.',
+                'message' => 'Error exception with bvn verification.',
                 'error' => $exception->getMessage(),
             ];
         }
