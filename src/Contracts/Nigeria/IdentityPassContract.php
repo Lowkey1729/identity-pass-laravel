@@ -23,6 +23,8 @@ interface IdentityPassContract
 
     public static function plateNumberVerification($vehicleNumber): array;
 
+    public static function bvnOrPhoneVerification($bvnOrPhone): array;
+
     public static function bvnWithFaceVerification(): array;
 
     public static function bvn2Verification(): array;
