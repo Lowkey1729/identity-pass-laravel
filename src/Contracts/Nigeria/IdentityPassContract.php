@@ -25,25 +25,25 @@ interface IdentityPassContract
 
     public static function bvnOrPhoneVerification($bvnOrPhone): array;
 
-    public static function bvnWithFaceVerification(): array;
+    public static function bvn2WithFaceVerification(): array;
 
     public static function bvn2Verification($bvn): array;
 
-    public static function bvn1Verification(): array;
+    public static function bvn1Verification($bvn): array;
 
-    public static function ninImageVerification(): array;
+    public static function ninImageVerification($image): array;
 
-    public static function ninWithoutFaceVerification(): array;
+    public static function ninWithoutFaceVerification($bvn_number): array;
 
-    public static function ninWithFaceVerification(): array;
+    public static function ninWithFaceVerification($bvn_number, $image): array;
 
-    public static function tinVerification(): array;
+    public static function tinVerification($channel, $number): array;
 
-    public static function basicCACVerification(): array;
+    public static function basicCACVerification($rc_number, $company_name): array;
 
-    public static function advanceCACVerification(): array;
+    public static function advanceCACVerification($rc_number, $company_name): array;
 
-    public static function phoneNumberVerification(): array;
+    public static function phoneNumberVerification($phone_number): array;
 
     public static function verifyBankAccount(): array;
 
