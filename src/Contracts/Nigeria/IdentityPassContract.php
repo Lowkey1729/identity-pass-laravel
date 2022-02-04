@@ -45,35 +45,35 @@ interface IdentityPassContract
 
     public static function phoneNumberVerification($phone_number): array;
 
-    public static function verifyBankAccount(): array;
+    public static function verifyBankAccount($account_number, $bank_code): array;
 
     public static function getBankCodes(): array;
 
-    public static function VotersCardImageVerification(): array;
+    public static function VotersCardImageVerification($image): array;
 
-    public static function votersCardVerification(): array;
+    public static function votersCardVerification($state, $last_name, $number): array;
 
-    public static function driverLicenceImageVerification(): array;
+    public static function driverLicenceImageVerification($image): array;
 
-    public static function driverLicenceVerification(): array;
+    public static function driverLicenceVerification($dob, $number): array;
 
-    public static function getCreditBureauStatement(): array;
+    public static function getCreditBureauStatement($phone_number,$first_name): array;
 
-    public static function passportVerification(): array;
+    public static function passportVerification($passport_number, $first_name, $last_name, $dob): array;
 
-    public static function faceComparison(): array;
+    public static function faceComparison($image_one, $image_two): array;
 
-    public static function faceEnrollment(): array;
+    public static function faceEnrollment($last_name, $first_name, $face_image, $email): array;
 
-    public static function faceLivelinessCheck(): array;
+    public static function faceLivelinessCheck($image): array;
 
-    public static function faceAuthentication(): array;
+    public static function faceAuthentication($image): array;
 
-    public static function idFaceMAtching(): array;
+    public static function idFaceMAtching($image): array;
 
     public static function getWalletBallance(): array;
 
-    public static function vinIdentificationNumber(): array;
+    public static function vinIdentificationNumber($vin): array;
 
-    public static function interpolBanList(): array;
+    public static function interpolBanList($search_mode, $image, $name): array;
 }
