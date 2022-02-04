@@ -57,7 +57,7 @@ interface IdentityPassContract
 
     public static function driverLicenceVerification($dob, $number): array;
 
-    public static function getCreditBureauStatement($phone_number,$first_name): array;
+    public static function getCreditBureauStatement($phone_number, $first_name): array;
 
     public static function passportVerification($passport_number, $first_name, $last_name, $dob): array;
 

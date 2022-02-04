@@ -584,9 +584,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function VotersCardImageVerification($image): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/verification/voters_card/image');
@@ -619,7 +617,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -629,9 +626,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function votersCardVerification($state, $last_name, $number): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/verification/voters_card');
@@ -675,9 +670,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function driverLicenceImageVerification($image): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/verification/drivers_license/image');
@@ -710,7 +703,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -720,9 +712,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function driverLicenceVerification($dob, $number): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/verification/drivers_license');
@@ -756,7 +746,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -764,11 +753,9 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function getCreditBureauStatement($phone_number,$first_name ): array
+    public static function getCreditBureauStatement($phone_number, $first_name): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/verification/credit_bureau');
@@ -802,8 +789,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -813,9 +798,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function passportVerification($passport_number, $first_name, $last_name, $dob): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/verification/national_passport');
@@ -851,8 +834,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -862,9 +843,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function faceComparison($image_one, $image_two): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/verification/national_passport');
@@ -899,8 +878,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -910,9 +887,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function faceEnrollment($last_name, $first_name, $face_image, $email): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/user/enroll/');
@@ -949,7 +924,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -959,9 +933,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function faceLivelinessCheck($image): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/face/liveliness_check');
@@ -994,7 +966,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -1004,9 +975,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function faceAuthentication($image): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/user/authenticate/');
@@ -1039,7 +1008,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -1049,9 +1017,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function idFaceMAtching($image): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/user/id_verification/');
@@ -1084,7 +1050,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -1094,9 +1059,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function getWalletBallance(): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'GET';
             $url = self::url('/wallet/balance');
@@ -1123,7 +1086,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -1133,9 +1095,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function vinIdentificationNumber($vin): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/verification/vehicle/vin');
@@ -1168,7 +1128,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -1179,7 +1138,6 @@ class IdentityPass implements IdentityPassContract
     public static function interpolBanList($search_mode, $image, $name): array
     {
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/data/ban_list/search');
@@ -1214,8 +1172,5 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
-
-
 }
