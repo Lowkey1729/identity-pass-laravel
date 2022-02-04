@@ -128,13 +128,11 @@ class IdentityPass implements IdentityPassContract
                 'message' => $data->detail,
             ];
         } catch (\Exception $exception) {
-
             return [
                 'success' => false,
                 'message' => 'Error exception with bvn or phone verification.',
                 'error' => $exception->getMessage(),
             ];
-
         }
     }
 
@@ -193,7 +191,6 @@ class IdentityPass implements IdentityPassContract
      */
     public static function bvn1Verification($bvn): array
     {
-
         try {
             $headers = self::headers();
             $method = 'POST';
@@ -224,7 +221,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -234,7 +230,6 @@ class IdentityPass implements IdentityPassContract
      */
     public static function ninImageVerification($image): array
     {
-
         try {
             $headers = self::headers();
             $method = 'POST';
@@ -265,8 +260,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -276,7 +269,6 @@ class IdentityPass implements IdentityPassContract
      */
     public static function ninWithoutFaceVerification($bvn_number): array
     {
-
         try {
             $headers = self::headers();
             $method = 'POST';
@@ -307,8 +299,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -318,7 +308,6 @@ class IdentityPass implements IdentityPassContract
      */
     public static function ninWithFaceVerification($bvn_number, $image): array
     {
-
         try {
             $headers = self::headers();
             $method = 'POST';
@@ -350,8 +339,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -361,9 +348,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function tinVerification($channel, $number): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/biometrics/merchant/data/verification/tin');
@@ -394,8 +379,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -405,9 +388,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function basicCACVerification($rc_number, $company_name): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/biometrics/merchant/data/verification/cac');
@@ -438,8 +419,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -449,9 +428,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function advanceCACVerification($rc_number, $company_name): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/biometrics/merchant/data/verification/cac/advance');
@@ -482,8 +459,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -493,9 +468,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function phoneNumberVerification($phone_number): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/biometrics/merchant/data/verification/phone_number/advance');
@@ -525,8 +498,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
@@ -536,9 +507,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function verifyBankAccount($account_number, $bank_code): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'POST';
             $url = self::url('/biometrics/merchant/data/verification/bank_account/advance');
@@ -569,7 +538,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
     }
 
     /**
@@ -579,9 +547,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function getBankCodes(): array
     {
-
         try {
-
             $headers = self::headers();
             $method = 'GET';
             $url = self::url('/biometrics/merchant/data/verification/bank_code');
@@ -609,8 +575,6 @@ class IdentityPass implements IdentityPassContract
                 'error' => $exception->getMessage(),
             ];
         }
-
-
     }
 
     /**
