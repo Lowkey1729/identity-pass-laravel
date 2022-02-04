@@ -18,7 +18,7 @@ class IdentityPass implements IdentityPassContract
         $path = $path == null ? '' : $path;
 
         if (env('APP_ENV') == 'production') {
-            return "https://api.myidentitypay.com/api/v1$path";
+            return "https://api.myidentitypay.com/api/v1/biometrics/merchant$path";
         }
 
         return "https://sandbox.myidentitypass.com/api/v1$path";
@@ -63,7 +63,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/vehicle');
+            $url = self::url('/data/verification/vehicle');
 
             $payload = [
                 'vehicle_number' => $vehicleNumber,
@@ -104,7 +104,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/bp/verification');
+            $url = self::url('/bp/verification');
 
             $payload = [
                 'channel' => 'BVN',
@@ -155,7 +155,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/bvn');
+            $url = self::url('/data/verification/bvn');
 
             $payload = [
                 'number' => $bvn,
@@ -194,7 +194,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/bvn_validation');
+            $url = self::url('/data/verification/bvn_validation');
 
             $payload = [
                 'number' => $bvn,
@@ -233,7 +233,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/nin/image');
+            $url = self::url('/data/verification/nin/image');
 
             $payload = [
                 'image' => $image,
@@ -272,7 +272,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/nin_wo_face');
+            $url = self::url('/data/verification/nin_wo_face');
 
             $payload = [
                 'number' => $bvn_number,
@@ -311,7 +311,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/nin');
+            $url = self::url('/data/verification/nin');
 
             $payload = [
                 'number' => $bvn_number,
@@ -351,7 +351,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/tin');
+            $url = self::url('/data/verification/tin');
 
             $payload = [
                 'channel' => $channel,
@@ -391,7 +391,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/cac');
+            $url = self::url('/data/verification/cac');
 
             $payload = [
                 'rc_number' => $rc_number,
@@ -431,7 +431,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/cac/advance');
+            $url = self::url('/data/verification/cac/advance');
 
             $payload = [
                 'rc_number' => $rc_number,
@@ -471,7 +471,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/phone_number/advance');
+            $url = self::url('/data/verification/phone_number/advance');
 
             $payload = [
                 'number' => $phone_number,
@@ -510,7 +510,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'POST';
-            $url = self::url('/biometrics/merchant/data/verification/bank_account/advance');
+            $url = self::url('/data/verification/bank_account/advance');
 
             $payload = [
                 'number' => $account_number,
@@ -550,7 +550,7 @@ class IdentityPass implements IdentityPassContract
         try {
             $headers = self::headers();
             $method = 'GET';
-            $url = self::url('/biometrics/merchant/data/verification/bank_code');
+            $url = self::url('/data/verification/bank_code');
 
 
 
@@ -582,8 +582,85 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function VotersCardImageVerification(): array
+    public static function VotersCardImageVerification($image): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/verification/voters_card/image');
+
+            $payload = [
+
+                'image' => $image,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with  Voter's card image verification.",
+                'error' => $exception->getMessage(),
+            ];
+        }
+    }
+
+    /**
+     * voters card verification
+     *
+     * @return array
+     */
+    public static function votersCardVerification($state, $last_name, $number): array
+    {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/verification/voters_card');
+
+            $payload = [
+
+                'state' => $state,
+                'last_name' => $last_name,
+                'number' => $number,
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with  Voter's card verification.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -591,8 +668,41 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function driverLicenceImageVerification(): array
+    public static function driverLicenceImageVerification($image): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/verification/drivers_license/image');
+
+            $payload = [
+
+                'image' => $image,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with  driver's licence image verification.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -600,8 +710,42 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function driverLicenceVerification(): array
+    public static function driverLicenceVerification($dob, $number): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/verification/drivers_license');
+
+            $payload = [
+
+                'dob' => $dob,
+                'number' => $number,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with  driver's licence  verification.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -609,8 +753,42 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function getCreditBureauStatement(): array
+    public static function getCreditBureauStatement($phone_number, $first_name): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/verification/credit_bureau');
+
+            $payload = [
+
+                'phone_number' => $phone_number,
+                'first_name' => $first_name,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with credit bureau verification.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -618,8 +796,44 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function passportVerification(): array
+    public static function passportVerification($passport_number, $first_name, $last_name, $dob): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/verification/national_passport');
+
+            $payload = [
+
+                'number' => $passport_number,
+                'first_name' => $first_name,
+                'last_name' => $last_name,
+                'dob' => $dob,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with passport verification.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -627,8 +841,43 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function faceComparison(): array
+    public static function faceComparison($image_one, $image_two): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/verification/national_passport');
+
+            $payload = [
+
+                'image_one' => $image_one,
+                'image_two' => $image_two,
+
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with credit bureau verification.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -636,8 +885,45 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function faceEnrollment(): array
+    public static function faceEnrollment($last_name, $first_name, $face_image, $email): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/user/enroll/');
+
+            $payload = [
+
+                'last_name' => $last_name,
+                'first_name' => $first_name,
+                'face_image' => $face_image,
+                'email' => $email,
+
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with face enrollment.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -645,8 +931,41 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function faceLivelinessCheck(): array
+    public static function faceLivelinessCheck($image): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/face/liveliness_check');
+
+            $payload = [
+
+                'image' => $image,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with face liveliness check .",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -654,8 +973,41 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function faceAuthentication(): array
+    public static function faceAuthentication($image): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/user/authenticate/');
+
+            $payload = [
+
+                'image' => $image,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with face authentication.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -663,8 +1015,41 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function idFaceMAtching(): array
+    public static function idFaceMAtching($image): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/user/id_verification/');
+
+            $payload = [
+
+                'image' => $image,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with id face matching.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -674,6 +1059,33 @@ class IdentityPass implements IdentityPassContract
      */
     public static function getWalletBallance(): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'GET';
+            $url = self::url('/wallet/balance');
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode(''));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with fetching wallet balance.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -681,8 +1093,41 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function vinIdentificationNumber(): array
+    public static function vinIdentificationNumber($vin): array
     {
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/verification/vehicle/vin');
+
+            $payload = [
+
+                'vin' => $vin,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with VIN identification number.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 
     /**
@@ -690,16 +1135,42 @@ class IdentityPass implements IdentityPassContract
      *
      * @return array
      */
-    public static function interpolBanList(): array
+    public static function interpolBanList($search_mode, $image, $name): array
     {
-    }
+        try {
+            $headers = self::headers();
+            $method = 'POST';
+            $url = self::url('/data/ban_list/search');
 
-    /**
-     * voters card verification
-     *
-     * @return array
-     */
-    public static function votersCardVerification(): array
-    {
+            $payload = [
+
+                'search_mode' => $search_mode,
+                'image' => $image,
+                'name' => $name,
+
+            ];
+
+
+            $res = CurlClient::send($headers, $method, $url, json_encode($payload));
+            $data = json_decode($res['RESPONSE_BODY']);
+
+            if ($res['HTTP_CODE'] == 200) {
+                return [
+                    'data' => $data,
+                ];
+            }
+
+            // error in transaction.
+            return [
+                'success' => false,
+                'message' => $data->detail,
+            ];
+        } catch (\Exception $exception) {
+            return [
+                'success' => false,
+                'message' => "Error exception with VIN identification number.",
+                'error' => $exception->getMessage(),
+            ];
+        }
     }
 }
