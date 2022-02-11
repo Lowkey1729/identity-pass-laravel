@@ -1,8 +1,9 @@
 <?php
 
-namespace  IdentityPass\IdentityPass\Transact;
+namespace IdentityPass\IdentityPass\Transact;
 
 use IdentityPass\IdentityPass\Classes\CurlClient;
+use IdentityPass\IdentityPass\Config\IdentityPassConfig;
 use IdentityPass\IdentityPass\Contracts\Nigeria\IdentityPassContract;
 
 class IdentityPass implements IdentityPassContract
@@ -34,7 +35,7 @@ class IdentityPass implements IdentityPassContract
         return [
             'Content-Type: application/json',
             "Cache-Control: no-cache",
-            "x-api-key: ".  self::getSecretKey(),
+            "x-api-key: " . self::getSecretKey(),
         ];
     }
 
@@ -46,10 +47,11 @@ class IdentityPass implements IdentityPassContract
     public static function getSecretKey(): string
     {
         if (env('APP_ENV') == 'production') {
-            return '';
+            return IdentityPassConfig::getKeys()->live_secret_key;
         }
 
-        return 'test_8vlwtr29t7347nhohr99n5:ti5BCHTr-spld_ex1E1ghoCyxsI';
+//        return 'test_8vlwtr29t7347nhohr99n5:ti5BCHTr-spld_ex1E1ghoCyxsI';
+        return IdentityPassConfig::getKeys()->test_secret_key;
     }
 
     /**
@@ -551,7 +553,6 @@ class IdentityPass implements IdentityPassContract
             $headers = self::headers();
             $method = 'GET';
             $url = self::url('/data/verification/bank_code');
-
 
 
             $res = CurlClient::send($headers, $method, $url, json_encode(''));
