@@ -22,7 +22,7 @@ class IdentityPass implements IdentityPassContract
             return "https://api.myidentitypay.com/api/v1/biometrics/merchant$path";
         }
 
-        return "https://sandbox.myidentitypass.com/api/v1$path";
+        return "https://sandbox.myidentitypass.com/api/v1/biometrics/merchant$path";
     }
 
     /**
@@ -46,12 +46,15 @@ class IdentityPass implements IdentityPassContract
      */
     public static function getSecretKey(): string
     {
+        $config = IdentityPassConfig::getKeys();
+
         if (env('APP_ENV') == 'production') {
-            return IdentityPassConfig::getKeys()->live_secret_key;
+
+            return $config['keys']['test_secret_key'];
+
         }
 
-//        return 'test_8vlwtr29t7347nhohr99n5:ti5BCHTr-spld_ex1E1ghoCyxsI';
-        return IdentityPassConfig::getKeys()->test_secret_key;
+        return $config['keys']['test_secret_key'];
     }
 
     /**
@@ -567,7 +570,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [

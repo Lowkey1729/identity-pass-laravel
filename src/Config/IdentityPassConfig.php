@@ -5,18 +5,16 @@ namespace IdentityPass\IdentityPass\Config;
 class IdentityPassConfig
 {
     /**
-     * @return KeysConfig
+     * @return array
      *
      */
-    public static function getKeys(): KeysConfig
+    public static function getKeys(): array
     {
         $configValues = config("identity-pass-laravel.keys.default");
 
-        return new KeysConfig(
-            $configValues['test_secret_key'],
-            $configValues['test_public_key'],
-            $configValues['live_public_key'],
-            $configValues['live_secret_key'],
-        );
+        return [
+            'keys' => $configValues,
+        ];
+
     }
 }
