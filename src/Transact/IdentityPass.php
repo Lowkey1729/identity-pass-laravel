@@ -39,7 +39,6 @@ class IdentityPass implements IdentityPassContract
         ];
     }
 
-
     /**
      * Get secret key
      *
@@ -47,7 +46,6 @@ class IdentityPass implements IdentityPassContract
      */
     public static function getSecretKey(): string
     {
-
         if (env('APP_ENV') == 'production') {
             return IdentityPassConfig::getKeys()->live_secret_key;
         }
