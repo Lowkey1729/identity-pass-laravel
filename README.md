@@ -25,10 +25,6 @@ composer require identity-pass/identity-pass-laravel
 
 You can publish and run the migrations with:
 
-```bash
-php artisan vendor:publish --tag="identity-pass-laravel-migrations"
-php artisan migrate
-```
 
 You can publish the config file with:
 
@@ -40,20 +36,19 @@ This is the contents of the published config file:
 
 ```php
 return [
+
+
+
 ];
 ```
 
-Optionally, you can publish the views using
 
-```bash
-php artisan vendor:publish --tag="identity-pass-laravel-views"
-```
 
 ## Usage
 
 ```php
-$identityPass = new IdentityPass\IdentityPass();
-echo $identityPass->echoPhrase('Hello, IdentityPass!');
+$identityPass = new use IdentityPass\IdentityPass\Transact\IdentityPass;
+return  $identityPass::getBankCodes();
 ```
 
 ## Testing
