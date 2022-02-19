@@ -49,9 +49,7 @@ class IdentityPass implements IdentityPassContract
         $config = IdentityPassConfig::getKeys();
 
         if (env('APP_ENV') == 'production') {
-
             return $config['keys']['test_secret_key'];
-
         }
 
         return $config['keys']['test_secret_key'];

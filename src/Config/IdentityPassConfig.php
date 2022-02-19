@@ -15,6 +15,5 @@ class IdentityPassConfig
         return [
             'keys' => $configValues,
         ];
-
     }
 }
