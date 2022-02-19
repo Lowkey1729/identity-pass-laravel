@@ -3,7 +3,7 @@
 namespace IdentityPass\IdentityPass;
 
 use IdentityPass\IdentityPass\Commands\IdentityPassCommand;
-use IdentityPass\IdentityPass\Transact\IdentityPass;
+use IdentityPass\IdentityPass\Identity\IdentityPass;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

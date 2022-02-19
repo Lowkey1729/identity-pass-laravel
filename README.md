@@ -47,7 +47,7 @@ return [
 ## Usage
 
 ```php
-$identityPass = new use IdentityPass\IdentityPass\Transact\IdentityPass;
+$identityPass = new use IdentityPass\IdentityPass\Identity\IdentityPass;
 return  $identityPass::getBankCodes();
 ```
 

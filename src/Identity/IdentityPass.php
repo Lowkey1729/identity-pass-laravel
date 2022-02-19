@@ -1,6 +1,6 @@
 <?php
 
-namespace IdentityPass\IdentityPass\Transact;
+namespace IdentityPass\IdentityPass\Identity;
 
 use IdentityPass\IdentityPass\Classes\CurlClient;
 use IdentityPass\IdentityPass\Config\IdentityPassConfig;
