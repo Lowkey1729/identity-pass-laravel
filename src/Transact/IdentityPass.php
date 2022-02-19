@@ -148,6 +148,7 @@ class IdentityPass implements IdentityPassContract
      */
     public static function bvn2WithFaceVerification(): array
     {
+        return '';
     }
 
     /**
