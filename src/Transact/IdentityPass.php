@@ -177,7 +177,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -216,7 +216,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -255,7 +255,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -294,7 +294,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -334,7 +334,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -374,7 +374,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -414,7 +414,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -454,7 +454,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -493,7 +493,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -533,7 +533,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -611,7 +611,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -655,7 +655,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -697,7 +697,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -740,7 +740,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -783,7 +783,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -828,7 +828,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -872,7 +872,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -918,7 +918,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -960,7 +960,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -1002,7 +1002,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -1044,7 +1044,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -1122,7 +1122,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
@@ -1166,7 +1166,7 @@ class IdentityPass implements IdentityPassContract
             // error in transaction.
             return [
                 'success' => false,
-                'message' => $data->detail,
+                'message' => $data,
             ];
         } catch (\Exception $exception) {
             return [
